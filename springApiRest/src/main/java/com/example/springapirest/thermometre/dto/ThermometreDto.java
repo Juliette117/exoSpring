@@ -6,10 +6,8 @@ import org.springframework.beans.factory.annotation.Value;
 @Data
 public class ThermometreDto {
 
-    private double temperatureCelsius;
+    private double value;
 
-    private double temperatureKelvin;
-
-    private double temperatureFahreinheit;
+    private String unit;
 
 }

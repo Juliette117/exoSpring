@@ -2,20 +2,25 @@ package com.example.springapirest.thermometre.service;
 
 import com.example.springapirest.thermometre.Thermometre;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Service
 public class ThermometreService {
 
 
-    public Thermometre getTemperature() {
+    public Thermometre getDefaultTemperature() {
         Thermometre thermometre = new Thermometre();
         thermometre.setCelcius(0);
         return thermometre;
     }
 
+    public Thermometre getDefaultTemperatureFromCelsius(@RequestParam(defaultValue = "0") double temperature) {
+        return this.getDefaultTemperature();
+    }
 
-    public double convertFahreinheitEnCelsius(double temperatureCelsius) {
-        return temperatureCelsius * 1.8 + 32;
+
+    public Thermometre getTemperature(String unit, double value) {
+        Thermometre temperature = this.getDefaultTemperature();
 
     }
 

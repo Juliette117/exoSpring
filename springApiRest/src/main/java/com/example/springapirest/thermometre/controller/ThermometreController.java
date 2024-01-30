@@ -20,32 +20,33 @@ public class ThermometreController {
 
     @GetMapping()
     public Thermometre getTemperature() {
-        return thermometreService.getTemperature();
+        return thermometreService.getDefaultTemperature();
     }
 
-    @PostMapping("/convertFahreinheitEnCelsius")
-    public double convertFahreinheitEnCelsius(@RequestBody ThermometreDto thermometreDto) {
-        return thermometreService.convertFahreinheitEnCelsius(
-                thermometreDto.getTemperatureCelsius()
+    @PostMapping("/convert")
+    public Thermometre convertTemperature(@RequestBody ThermometreDto convert) {
+        return thermometreService.getTemperature(
+                convert.getUnit(),
+                convert.getValue()
         );
     }
 
-    @PostMapping("/convertKelvinEnCelcius")
-    public double convertKelvinEnCelcius(@RequestBody ThermometreDto thermometreDto) {
-        return thermometreService.convertKelvinEnCelsius(
-                thermometreDto.getTemperatureCelsius(),
-                thermometreDto.getTemperatureKelvin()
-        );
-    }
-
-    @PostMapping("/convertCelsiusEnFahreinheit")
-    public double convertCelsiusEnFahreinheit(@RequestBody ThermometreDto thermometreDto) {
-        return thermometreService.convertCelsiusEnFahreinheit(
-                thermometreDto.getTemperatureFahreinheit(),
-                thermometreDto.getTemperatureCelsius()
-
-        );
-    }
+//    @PostMapping("/convertKelvinEnCelcius")
+//    public double convertKelvinEnCelcius(@RequestBody ThermometreDto thermometreDto) {
+//        return thermometreService.convertKelvinEnCelsius(
+//                thermometreDto.getTemperatureCelsius(),
+//                thermometreDto.getTemperatureKelvin()
+//        );
+//    }
+//
+//    @PostMapping("/convertCelsiusEnFahreinheit")
+//    public double convertCelsiusEnFahreinheit(@RequestBody ThermometreDto thermometreDto) {
+//        return thermometreService.convertCelsiusEnFahreinheit(
+//                thermometreDto.getTemperatureFahreinheit(),
+//                thermometreDto.getTemperatureCelsius()
+//
+//        );
+//    }
 
 
 }
